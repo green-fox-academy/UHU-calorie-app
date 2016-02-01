@@ -1,8 +1,17 @@
-// grab our gulp packages
-var gulp  = require('gulp'),
-    gutil = require('gulp-util');
+'use strict';
 
-// create a default task and just log a message
-gulp.task('default', function() {
-  return gutil.log('Gulp is running!')
+var gulp = require('gulp'); 
+var jshint = require('gulp-jshint');
+var watch = require('gulp-watch');
+
+gulp.task('jshint', function() {
+  gulp.src('./*.js')
+    .pipe(jshint())
+    .pipe(jshint.reporter('default'));
 });
+
+gulp.task('watch', function() {
+  gulp.watch('./*.js', ['jshint']);
+});
+
+gulp.task('default', ['watch']);
