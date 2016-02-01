@@ -18,6 +18,8 @@
   "homepage": "https://github.com/greenfox-academy/UHU-calorie-app#readme",
   "devDependencies": {
     "ava": "^0.11.0",
-    "gulp": "^3.9.0"
+    "gulp": "^3.9.0",
+    "gulp-jshint": "^2.0.0",
+    "jshint": "^2.9.1"
   }
 }
