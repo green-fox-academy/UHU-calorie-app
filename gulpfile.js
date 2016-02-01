@@ -12,7 +12,7 @@ gulp.task('jshint', function() {
 });
 
 
-gulp.task('test', () => {
+gulp.task('test', function() {
 	gulp.src('test.js')
 		.pipe(ava());
 });
