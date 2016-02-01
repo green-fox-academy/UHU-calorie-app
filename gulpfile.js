@@ -11,13 +11,15 @@ gulp.task('jshint', function() {
     .pipe(jshint.reporter('default'));
 });
 
-gulp.task('watch', function() {
-  gulp.watch('./*.js', ['jshint']);
-});
 
-gulp.task('default', () => {
-	return gulp.src('test.js')
-		// gulp-ava needs filepaths so you can't have any plugins before it 
+gulp.task('test', () => {
+	gulp.src('test.js')
 		.pipe(ava());
 });
+
+gulp.task('watch', function() {
+  gulp.watch('./*.js', ['jshint']);
+  gulp.watch('./*.js', ['test']);
+});
+
 gulp.task('default', ['watch']);
