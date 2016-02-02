@@ -16,7 +16,7 @@ function addMeals(meal, cb){
 
 function deleteMeals(id, cb){
   mysql.conn.query('DELETE FROM meal WHERE meal_id = ?;', id,  function(err, res){
-    cb(res);
+    cb(err, res);
   });
 }
 
@@ -25,9 +25,9 @@ var test = {
   calories: 666,
 };
 
-addMeals(test, function(res){console.log(res);});
-listMeals(function(res){console.log(res);});
-deleteMeals(131, function(res){console.log(res);});
+addMeals(test, function(err, res){console.log(res);});
+listMeals(function(err, res){console.log(res);});
+deleteMeals(131, function(err, res){console.log(res);});
 
 module.exports = {
   add: addMeals,
