@@ -27,7 +27,7 @@ var test = {
   calories: 666,
 };
 
-//addMeals(test, function(err, res){console.log(res);});
+addMeals(test, function(err, res){console.log(res);});
 listMeals(function(err, res){console.log(res);});
 //deleteMeals(131, function(err, res){console.log(res);});
 
