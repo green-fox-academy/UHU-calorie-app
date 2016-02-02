@@ -29,7 +29,7 @@ var test = {
 
 addMeals(test, function(err, res){console.log(res);});
 listMeals(function(err, res){console.log(res);});
-deleteMeals(131, function(err, res){console.log(res);});
+//deleteMeals(131, function(err, res){console.log(res);});
 
 module.exports = {
   add: addMeals,
