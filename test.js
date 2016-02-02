@@ -8,3 +8,11 @@ test(t => {
   t.is(typeof items.del, 'function');
   t.is(typeof items.add, 'function');
 });
+
+
+test.cb(t => {
+  t.is(items.del(131, function(err, res) {
+    t.is(res.affectedRows, 0);
+    t.end();
+  }));
+});
