@@ -8,6 +8,10 @@ var url = 'https://uhu-systems-calorie.herokuapp.com';
 app.use(express.static('public'));
 app.listen(process.env.PORT || 3000);
 
+app.get('/', function(req, res) {
+  console.log('hu');
+});
+
 app.get('/hello', function(req, res) {
   res.send('Hello World');
 });
