@@ -1,0 +1,27 @@
+'use strict';
+
+import test from 'ava';
+import double from './double';
+
+test(t => {
+      t.same(double(2), 4);
+});
+
+test.cb(t => {
+    setTimeout(() => {
+        t.pass();
+        t.end();
+    }, 100);
+});
+
+/*test.only('will be run', t => {
+    t.pass();
+});*/
+
+test(t => {
+    t.is(t.context, 'Hello World');
+});
+
+test.beforeEach(t => {
+    t.context = 'Hello World';
+});

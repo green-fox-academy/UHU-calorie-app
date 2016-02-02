@@ -1,7 +1,8 @@
 'use strict';
 
 import test from 'ava';
+import items from './items';
 
 test(t => {
-      t.same([1, 2], [1, 2]);
+  t.is(typeof items.list, 'function');
 });
