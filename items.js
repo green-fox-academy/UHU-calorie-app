@@ -21,13 +21,15 @@ function deleteMeals(id, cb){
 }
 
 var test = {
+/* jshint ignore:start */
   meal_name: 'viccaaaa',
+/* jshint ignore:end */
   calories: 666,
 };
 
 addMeals(test, function(res){console.log(res);});
 listMeals(function(res){console.log(res);});
-deleteMeals(231, function(res){console.log(res);});
+deleteMeals(131, function(res){console.log(res);});
 
 module.exports = {
   add: addMeals,

@@ -1,7 +1,7 @@
 'use strict';
 
 var express = require('express');
-//var mysql = require('./connection.js');
+// var mysql = require('./connection.js');
 var items = require('./items.js');
 var app = express();
 
