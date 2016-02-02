@@ -11,8 +11,8 @@ gulp.task('jshint', function() {
 });
 
 gulp.task('test', function() {
-	gulp.src('test.js')
-	.pipe(ava());
+  gulp.src('test.js')
+  .pipe(ava());
 });
 
 gulp.task('watch', function() {
