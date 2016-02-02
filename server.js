@@ -5,9 +5,9 @@ var express = require('express');
 var app = express();
 var url = 'https://uhu-systems-calorie.herokuapp.com/';
 
-app.use(express.static('public'));
+//app.use(express.static('public'));
 app.listen(process.env.PORT || 3000);
 
-app.get(url + '/hello', function(res,req) {
+app.get(url, function(res,req) {
   res.send('Hello World');
 });
