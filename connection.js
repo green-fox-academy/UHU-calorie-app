@@ -2,7 +2,7 @@
 
 var mysql = require('mysql');
 
-var db_config = {
+var dbConfig = {
   host: 'eu-cdbr-west-01.cleardb.com',
   user: 'be2be2ab917e7e',
   password: '95dd4052',
@@ -10,7 +10,7 @@ var db_config = {
   timezone: 'utc'
 };
 
-var connection = mysql.createConnection(db_config);
+var connection = mysql.createConnection(dbConfig);
 
 module.exports = {
   conn: connection
