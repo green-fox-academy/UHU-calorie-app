@@ -12,12 +12,14 @@ gulp.task('jshint', function() {
 
 gulp.task('test', function() {
 	gulp.src('test.js')
-		.pipe(ava());
+	.pipe(ava());
 });
 
 gulp.task('watch', function() {
   gulp.watch('./*.js', ['jshint']);
   gulp.watch('./*.js', ['test']);
 });
+
+gulp.task('ci', ['test', 'jshint']);
 
 gulp.task('default', ['watch']);
