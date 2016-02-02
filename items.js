@@ -4,13 +4,13 @@ var mysql = require('./connection.js');
 
 function listMeals(cb){
   mysql.conn.query('SELECT * FROM meal;', function(err, res){
-    cb(err, res);
+    cb(res);
   });
 }
 
 function addMeals(meal, cb){
   mysql.conn.query('INSERT INTO meal SET ?;', meal,  function(err, res){
-    cb(err, res);
+    cb(res);
   });
 }
 
