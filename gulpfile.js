@@ -7,7 +7,8 @@ var ava = require('gulp-ava');
 gulp.task('jshint', function() {
   gulp.src('./*.js')
     .pipe(jshint())
-    .pipe(jshint.reporter('default'));
+    .pipe(jshint.reporter('default'))
+    .pipe(jshint.reporter('fail'));
 });
 
 gulp.task('test', function() {

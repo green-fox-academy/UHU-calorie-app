@@ -21,7 +21,9 @@ function deleteMeals(id, cb){
 }
 
 var test = {
+/* jshint ignore:start */
   meal_name: 'viccaaaa',
+/* jshint ignore:end */
   calories: 666,
 };
 
