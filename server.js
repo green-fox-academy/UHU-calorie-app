@@ -21,3 +21,15 @@ app.get('/meals', function(req, res) {
     res.json(result);
   });
 });
+
+app.delete('/meals/:id', function (req, res){
+  items.del(req.params.id, function(id) {
+    res.json(id);
+  });
+});
+
+app.post('/meals', function (req, res){
+  items.add(req.body, function(item) {
+    res.json(item);
+  });
+});
