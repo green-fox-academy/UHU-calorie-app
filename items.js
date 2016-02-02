@@ -4,19 +4,19 @@ var mysql = require('./connection.js');
 
 function listMeals(cb){
   mysql.conn.query('SELECT * FROM meal;', function(err, res){
-    cb(res);
+    cb(err, res);
   });
 }
 
 function addMeals(meal, cb){
   mysql.conn.query('INSERT INTO meal SET ?;', meal,  function(err, res){
-    cb(res);
+    cb(err, res);
   });
 }
 
 function deleteMeals(id, cb){
   mysql.conn.query('DELETE FROM meal WHERE meal_id = ?;', id,  function(err, res){
-    cb(res);
+    cb(err, res);
   });
 }
 
@@ -27,9 +27,9 @@ var test = {
   calories: 666,
 };
 
-addMeals(test, function(err, res){console.log(res);});
+//addMeals(test, function(err, res){console.log(res);});
 listMeals(function(err, res){console.log(res);});
-deleteMeals(131, function(err, res){console.log(res);});
+//deleteMeals(131, function(err, res){console.log(res);});
 
 module.exports = {
   add: addMeals,
