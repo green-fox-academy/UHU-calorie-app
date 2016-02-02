@@ -1,9 +1,8 @@
 'use strict';
 
 var express = require('express');
-/* jshint ignore:start */
-var mysql = require('./connection.js');
-/* jshint ignore:end */
+// var mysql = require('./connection.js');
+var items = require('./items.js');
 var app = express();
 
 app.use(express.static('public'));
@@ -15,4 +14,10 @@ app.get('/', function(req, res) {
 
 app.get('/hello', function(req, res) {
   res.send('Hello World');
+});
+
+app.get('/meals', function(req, res) {
+  items.list(function(result){
+    res.json(result);
+  });
 });
