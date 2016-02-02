@@ -16,7 +16,7 @@ app.get('/hello', function(req, res) {
   res.send('Hello World');
 });
 
-app.post('/meals', function(req, res) {
+app.get('/meals', function(req, res) {
   items.list(function(result){
     res.json(result);
   });
