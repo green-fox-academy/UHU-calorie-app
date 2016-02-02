@@ -27,7 +27,7 @@ var test = {
 
 addMeals(test, function(res){console.log(res);});
 listMeals(function(res){console.log(res);});
-deleteMeals(131, function(res){console.log(res);});
+deleteMeals(231, function(res){console.log(res);});
 
 module.exports = {
   add: addMeals,
