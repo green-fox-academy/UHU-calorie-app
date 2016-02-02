@@ -3,11 +3,11 @@
 var express = require('express');
 //var mysql = require('./connection.js');
 var app = express();
-var url = 'https://uhu-systems-calorie.herokuapp.com/';
+//var url = 'https://uhu-systems-calorie.herokuapp.com/';
 
 //app.use(express.static('public'));
 app.listen(process.env.PORT || 3000);
 
-app.get(url, function(res,req) {
+app.get('/', function(res,req) {
   res.send('Hello World');
 });
