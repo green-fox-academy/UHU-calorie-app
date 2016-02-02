@@ -10,14 +10,12 @@ function listMeals(cb){
 
 function addMeals(meal, cb){
   mysql.conn.query('INSERT INTO meal SET ?;', meal,  function(err, res){
-    if (err) throw err;
     cb(err, res);
   });
 }
 
 function deleteMeals(id, cb){
   mysql.conn.query('DELETE FROM meal WHERE meal_id = ?;', id,  function(err, res){
-    if (err) throw err;
     cb(err, res);
   });
 }
