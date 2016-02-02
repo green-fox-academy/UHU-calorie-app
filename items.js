@@ -30,9 +30,9 @@ var test = {
   calories: 666,
 };
 
-addMeals(test, function(res){console.log(res);});
-listMeals(function(res){console.log(res);});
-deleteMeals(131, function(res){console.log(res);});
+addMeals(test, function(err, res){console.log(res);});
+listMeals(function(err, res){console.log(res);});
+deleteMeals(131, function(err, res){console.log(res);});
 
 module.exports = {
   add: addMeals,
