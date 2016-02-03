@@ -13,5 +13,5 @@ var dbConfig = {
 var connection = mysql.createConnection(dbConfig);
 
 module.exports = {
-  conn: connection
+  connection: connection
 };
