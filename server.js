@@ -2,6 +2,7 @@
 
 var express = require('express');
 var meals = require('./meals.js');
+var body_parser = require('body-parser');
 var app = express();
 var defaultPort = 3000;
 
