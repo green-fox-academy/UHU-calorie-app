@@ -1,7 +1,7 @@
 'use strict';
 
-// var mysql = require('./connection.js');
-var mysql = require('./localconnection.js');
+var mysql = require('./connection.js');
+// var mysql = require('./localconnection.js');
 
 function listMeals(cb){
   mysql.connection.query('SELECT * FROM meal;', function(err, res){
