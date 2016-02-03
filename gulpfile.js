@@ -11,16 +11,16 @@ gulp.task('jshint', function() {
     .pipe(jshint.reporter('fail'));
 });
 
-gulp.task('test', function() {
-  gulp.src('test.js')
-  .pipe(ava());
-});
+// gulp.task('test', function() {
+//   gulp.src('test.js')
+//   .pipe(ava());
+// });
 
 gulp.task('watch', function() {
   gulp.watch('./*.js', ['jshint']);
   gulp.watch('./*.js', ['test']);
 });
 
-gulp.task('ci', ['test', 'jshint']);
+gulp.task('ci', ['jshint']);
 
 gulp.task('default', ['watch']);
