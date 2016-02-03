@@ -22,7 +22,7 @@ app.get('/meals', function(req, res) {
 });
 
 app.delete('/meals/:id', function (req, res){
-  meals.del(req.params.id, function(err, result) {
+  meals.del(req.params.id, function(err, res) {
     if (err) {
       res.json({status: 'not exists'});
     } else {
@@ -32,9 +32,11 @@ app.delete('/meals/:id', function (req, res){
 });
 
 app.post('/meals', function (req, res) {
-  meals.add(req.body, function(err, result) {
-      	res.json({
-    	status: 'ok'
-  	});
+  meals.add(req.body, function(err, res) {
+     if (err) {
+      res.json({status: 'not exists'});
+    } else {
+      res.json({status: 'ok'});
+    }
   });
 });
