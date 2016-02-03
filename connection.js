@@ -11,7 +11,6 @@ var dbConfig = {
 };
 
 var connection = mysql.createConnection(dbConfig);
-connection.connect();
 
 function handleDisconnection() {
 	connection.connect(function(err) {
