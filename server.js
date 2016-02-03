@@ -2,10 +2,11 @@
 
 var express = require('express');
 var meals = require('./meals.js');
-var body_parser = require('body-parser');
+var bodyParser = require('body-parser');
 var app = express();
 var defaultPort = 3000;
 
+app.use(bodyParser.json());
 app.use(express.static('public'));
 app.listen(process.env.PORT || defaultPort);
 
