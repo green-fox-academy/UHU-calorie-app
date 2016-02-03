@@ -20,7 +20,6 @@ body {
     padding: 5px 20px;
     text-shadow: 1px -1px 2px rgba(150, 150, 150, 1);
     outline: none;
-    text-align: center;
 }
 
 #myDropdown {
@@ -28,7 +27,6 @@ body {
     overflow-y:scroll;
     margin: 0 auto;
     width: 200px;
-    text-align: center;
     overflow-x: hidden;
 }
 
@@ -56,12 +54,12 @@ body {
 
 .dropdown {
     display: inline-block;
-    text-align: center;
+    text-align: center; 
 }
 
 placeholder {
     font-style: italic;
-    text-align: center;
+    text-align: center;   
 }
 
 .dropdown-content {
@@ -116,7 +114,7 @@ span {
 }
 
 .summary:nth-child(2) {
-   width: 30px;
+   width: 30px; 
 }
 
 span:nth-child(1) {
@@ -158,7 +156,7 @@ input {
     font-weight: bold;
     font-size: 150%;
     text-shadow: 1px -1px 2px rgba(150, 150, 150, 1);
-
+    
 }
 
 .item-row {
