@@ -113,7 +113,7 @@ function isRequestOK(request) {
 
 function createNewRow(item) {
   var newRow = document.createElement('div');
-  newRow.setAttribute('id', item.id);
+  newRow.setAttribute('id', item.meal_id);
   newRow.setAttribute('class', 'item-row');
   itemsContainer.appendChild(newRow);
   newRow.addEventListener('dblclick', callDeleteItem);
