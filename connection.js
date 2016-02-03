@@ -6,7 +6,7 @@ var dbConfig = {
   host: 'localhost',
   user: 'test',
   password: 'test',
-  database: 'database',
+  database: 'calorie',
   timezone: 'utc'
 };
 
