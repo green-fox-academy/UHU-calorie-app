@@ -4,9 +4,11 @@ var mysql = require('./connection.js');
 // var mysql = require('./localconnection.js');
 
 function listMeals(cb){
+  connection.connect();
   mysql.connection.query('SELECT * FROM meal;', function(err, res){
     cb(err, res);
   });
+  connection.end();
 }
 
 function addMeals(meal, cb){
