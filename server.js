@@ -25,9 +25,9 @@ app.get('/meals', function(req, res) {
 app.delete('/meals/:id', function (req, res){
   items.del(req.params.id, function(err, result) {
     if (err) {
-      res.json({status: 'not exists'});
+      result.json({status: 'not exists'});
     } else {
-      res.json({status: 'ok'});
+      result.json({status: 'ok'});
     }
   });
 });
