@@ -11,7 +11,7 @@ app.listen(process.env.PORT || defaultPort);
 app.get('/meals', function(req, res) {
   meals.list(function(err, result){
     if (err){
-      res.json({status: 'not exists'});
+      res.json({status: err});
     } else {
       res.json(result);
     }
