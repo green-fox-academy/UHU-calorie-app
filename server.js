@@ -12,27 +12,31 @@ app.get('/', function(req, res) {
 });
 
 app.get('/meals', function(req, res) {
-  meals.list(function(result){
-    res.json(result);
+  meals.list(function(err, result){
+    if (err){
+      res.json({status: 'not exists'});
+    } else {
+      res.json(result);
+    }
   });
 });
 
 /*app.delete('/meals/:id', function (req, res){
   meals.del(req.params.id, function(err, res) {
-    if (err) {
-      res.json({status: 'not exists'});
-    } else {
-      res.json({status: 'ok'});
-    }
+  if (err) {
+  res.json({status: 'not exists'});
+  } else {
+  res.json({status: 'ok'});
+  }
   });
-});
+  });
 
-app.post('/meals', function (req, res) {
+  app.post('/meals', function (req, res) {
   meals.add(req.body, function(err, res) {
-     if (err) {
-      res.json({status: 'not exists'});
-    } else {
-      res.json({status: 'ok'});
-    }
+  if (err) {
+  res.json({status: 'not exists'});
+  } else {
+  res.json({status: 'ok'});
+  }
   });
-});*/
+  });*/
