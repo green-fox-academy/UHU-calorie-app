@@ -1,8 +1,7 @@
 'use strict';
 
 var express = require('express');
-// var mysql = require('./connection.js');
-var items = require('./items.js');
+var meals = require('./meals.js');
 var app = express();
 
 app.use(express.static('public'));
@@ -17,23 +16,25 @@ app.get('/hello', function(req, res) {
 });
 
 app.get('/meals', function(req, res) {
-  items.list(function(result){
+  meals.list(function(result){
     res.json(result);
   });
 });
 
 app.delete('/meals/:id', function (req, res){
-  items.del(req.params.id, function(err, result) {
+  meals.del(req.params.id, function(err, result) {
     if (err) {
-      result.json({status: 'not exists'});
+      res.json({status: 'not exists'});
     } else {
-      result.json({status: 'ok'});
+      res.json({status: 'ok'});
     }
   });
 });
 
-app.post('/meals', function (req, res){
-  items.add(req.body, function(item) {
-    res.json(item);
+app.post('/meals', function (req, res) {
+  meals.add(req.body, function(err, result) {
+      	res.json({
+    	status: 'ok'
+  	});
   });
 });
