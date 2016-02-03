@@ -1,7 +1,7 @@
 'use strict';
 
 import test from 'ava';
-/*import items from './items';
+import items from './items';
 
 test(t => {
   t.is(typeof items.list, 'function');
@@ -15,8 +15,8 @@ test.cb(t => {
     t.is(res.affectedRows, 0);
     t.end();
   }));
-});*/
-
-test.only('will be run', t => {
-    t.pass();
 });
+
+/*test.only('will be run', t => {
+    t.pass();
+});*/
