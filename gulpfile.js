@@ -18,7 +18,7 @@ gulp.task('jshint', function() {
 
 gulp.task('watch', function() {
   gulp.watch('./*.js', ['jshint']);
-  gulp.watch('./*.js', ['test']);
+  // gulp.watch('./*.js', ['test']);
 });
 
 gulp.task('ci', ['jshint']);
