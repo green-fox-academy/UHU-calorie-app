@@ -3,10 +3,10 @@
 var mysql = require('mysql');
 
 var dbConfig = {
-  host: 'http://localhost',
-  user: 'test',
-  password: 'test',
-  database: 'meal',
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'calories',
   timezone: 'utc'
 };
 
