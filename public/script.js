@@ -11,7 +11,7 @@ var addNewCalories = document.getElementById('new-calories');
 var addNewDate = document.getElementById('new-date');
 var summary = document.getElementById('summary');
 var itemsContainer = document.querySelector('.items-container');
-var url = 'http://localhost:3000/meals';
+var url = 'http://uhu-systems-calorie.herokuapp.com/meals';
 var datePicker = document.querySelector('.dropbtn');
 datePicker.addEventListener('click', openDatePicker);
 addNewDate.valueAsDate = new Date();
