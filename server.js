@@ -30,7 +30,8 @@ app.delete('/meals/:id', function (req, res){
 app.post('/meals', function (req, res) {
   meals.add(req.body, function(err, result) {
       	res.json({
-    	status: 'ok'
+    	status: ok,
+      result: result
   	});
   });
 });
