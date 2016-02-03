@@ -2,7 +2,7 @@
 
 var gulp = require('gulp'); 
 var jshint = require('gulp-jshint');
-var ava = require('gulp-ava');
+// var ava = require('gulp-ava');
 
 gulp.task('jshint', function() {
   gulp.src('./*.js')
