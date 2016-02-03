@@ -11,17 +11,13 @@ app.get('/', function(req, res) {
   res.send('Hello');
 });
 
-app.get('/hello', function(req, res) {
-  res.send('Hello World');
-});
-
 app.get('/meals', function(req, res) {
   meals.list(function(result){
     res.json(result);
   });
 });
 
-app.delete('/meals/:id', function (req, res){
+/*app.delete('/meals/:id', function (req, res){
   meals.del(req.params.id, function(err, res) {
     if (err) {
       res.json({status: 'not exists'});
@@ -39,4 +35,4 @@ app.post('/meals', function (req, res) {
       res.json({status: 'ok'});
     }
   });
-});
+});*/
