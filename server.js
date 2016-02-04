@@ -1,14 +1,29 @@
 'use strict';
 
 var express = require('express');
-var meals = require('./meals.js');
+var Meal = require('./meals.js');
 var bodyParser = require('body-parser');
+var mysql = require('mysql');
 var app = express();
 var defaultPort = 3000;
 
 app.use(bodyParser.json());
 app.use(express.static('public'));
 app.listen(process.env.PORT || defaultPort);
+
+var dbConfig = {
+  host: 'localhost',
+  user: 'root',
+  password: '',
+  database: 'calories',
+  timezone: 'utc'
+};
+
+var connection = mysql.createConnection(process.env.CLEARDB_DATABASE_URL || dbConfig);
+
+connection.connect();
+
+var meals = new Meal(connection);
 
 app.get('/meals', function(req, res) {
   meals.list(function(err, result){
