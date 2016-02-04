@@ -1,4 +1,4 @@
-/*'use strict';
+'use strict';
 
 import test from 'ava';
 import meals from './meals';
@@ -17,6 +17,19 @@ test.cb(t => {
   }));
 });
 
-/*test.only('will be run', t => {
-    t.pass();
-});*/
+test.cb(t => {
+  t.is(meals.list(function(err, res) {
+  t.is(Array.isArray(res), true);
+  t.end();
+  }));
+});
+
+
+test.cb(t => {
+  meals.list(function(err, res) {
+  console.log(res);
+  var type = typeof res;
+  t.is(type, 'object');
+  t.end();
+  });
+});

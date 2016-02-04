@@ -4,9 +4,9 @@ var mysql = require('mysql');
 
 var dbConfig = {
   host: 'localhost',
-  user: 'test',
-  password: 'test',
-  database: 'calorie',
+  user: 'root',
+  password: 'mysql44',
+  database: 'meal',
   timezone: 'utc'
 };
 
