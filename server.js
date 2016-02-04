@@ -52,5 +52,3 @@ app.post('/meals', function (req, res) {
     });
   });
 });
-
-connection.end();
