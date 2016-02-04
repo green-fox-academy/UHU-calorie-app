@@ -29,21 +29,11 @@ app.delete('/meals/:id', function (req, res){
     }
   });
 });
+
 app.post('/meals', function (req, res) {
   meals.add(req.body, function(err, result) {
-      	res.json({
+    res.json({
       result: result
-  	});
+    });
   });
 });
-/*
-app.post('/meals', function (req, res) {
-  meals.add(req.body, function(err, result) {
-    if (err) {
-      res.json(result);
-    } else {
-      res.json({status: 'ok'});
-    }
-  });
-});
-*/

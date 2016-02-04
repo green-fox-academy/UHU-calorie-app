@@ -23,13 +23,3 @@ test.cb(t => {
   t.end();
   }));
 });
-
-
-test.cb(t => {
-  meals.list(function(err, res) {
-  console.log(res);
-  var type = typeof res;
-  t.is(type, 'object');
-  t.end();
-  });
-});

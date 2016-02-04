@@ -178,6 +178,7 @@ function createRequest(method, url, meal) {
   request = new XMLHttpRequest();
   request.open(method, url);
   request.setRequestHeader('Content-Type', 'application/json');
+  console.log(meal);
   request.send(meal);
 }
 
