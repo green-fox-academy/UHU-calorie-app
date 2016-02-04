@@ -24,3 +24,18 @@ test.cb(t => {
   t.end();
   }));
 });
+
+test.cb(t => {
+  meals.add({meal_name: 'gec', calories: 55, date: 1998-12-12}, function(err, res) {
+  console.log(res);
+  t.is(typeof(res), 'object');
+  t.end();
+  });
+});
+
+test.cb(t => {
+  meals.add({meal_name: 'pics', calories: 60}, function(err, res) {
+    t.same([res.affectedRows], [1]);
+    t.end();
+  });
+});
