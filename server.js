@@ -21,8 +21,6 @@ var dbConfig = {
 
 var connection = mysql.createConnection(process.env.CLEARDB_DATABASE_URL || dbConfig);
 
-connection.connect();
-
 var meals = new Meal(connection);
 
 app.get('/meals', function(req, res) {
@@ -52,3 +50,6 @@ app.post('/meals', function (req, res) {
     });
   });
 });
+
+connection.connect();
+
