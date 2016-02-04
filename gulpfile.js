@@ -2,7 +2,7 @@
 
 var gulp = require('gulp'); 
 var jshint = require('gulp-jshint');
-// var ava = require('gulp-ava');
+var ava = require('gulp-ava');
 
 gulp.task('jshint', function() {
   gulp.src('./*.js')
@@ -11,14 +11,14 @@ gulp.task('jshint', function() {
     .pipe(jshint.reporter('fail'));
 });
 
-// gulp.task('test', function() {
-//   gulp.src('test.js')
-//   .pipe(ava());
-// });
+gulp.task('test', function() {
+  gulp.src('test.js')
+  .pipe(ava());
+});
 
 gulp.task('watch', function() {
   gulp.watch('./*.js', ['jshint']);
-  // gulp.watch('./*.js', ['test']);
+  gulp.watch('./*.js', ['test']);
 });
 
 gulp.task('ci', ['jshint']);
