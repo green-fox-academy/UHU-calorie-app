@@ -39,3 +39,28 @@ test.cb(t => {
     t.end();
   });
 });
+
+test.cb(t => {
+  var connection = {};
+  t.is(connection.query = function(query, cb) {
+    cb(null, [{}]);
+  });
+
+  var meal = new Meal(connection);
+  t.is(meal.getAll(function(query, cb) {
+    t.ok(meals.length > 0);
+    t.end();
+  }));
+});
+
+test.cb(t => {
+  t.is('query string', function(t) {
+    var connection = {};
+  t.is(connection.query = function(query, cb) {
+    t.equal(query, 'SELECT * FROM meal');
+    t.end();
+    });
+  });
+  var meal = new Meal(connection);
+  meal.getAll();
+});
