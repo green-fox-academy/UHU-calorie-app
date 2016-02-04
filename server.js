@@ -21,22 +21,7 @@ var dbConfig = {
 
 var connection = mysql.createConnection(process.env.CLEARDB_DATABASE_URL || dbConfig);
 
-function handleDisconnection() {
- connection.connect(function(err) {
-   if(err) {
-     console.log('Error when connecting to database...', err);
-     setTimeout(handleDisconnection, 2000);
-   }
- });
- connection.on('error', function(err) {
-   console.log('database error...', err);
-   if(err.code === 'PROTOCOL_CONNECTION_LOST') {
-     handleDisconnection();
-   } else{
-     throw err;
-   }
- });
-}
+connection.connect();
 
 var meals = new Meal(connection);
 
@@ -68,5 +53,4 @@ app.post('/meals', function (req, res) {
   });
 });
 
-connection.connect();
-handleDisconnection();
+connection.end();
