@@ -19,6 +19,5 @@ function Meal(connection) {
     });
   };
 }
-module.exports = {
-  Meal: Meal
-};
+
+module.exports = Meal;
