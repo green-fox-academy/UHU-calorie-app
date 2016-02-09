@@ -10,8 +10,19 @@ calApp.controller('MainController', function($scope, $http) {
       calories: $scope.newMeal.calories,
       date: $scope.newMeal.date
     };
-
-    $scope.meals.push(mealCreator);
+    
+    var config = {
+      headers : {'Content-Type': 'application/json'}
+    }
+    
+    $http.post('http://localhost:3000/meals', mealCreator, config   
+  ).then(function(response){
+      console.log(response);
+    },
+        function(response) {
+      console.log(response);
+    });
+    //$scope.meals.push(mealCreator);
     $scope.newMeal.meal_name = '';
     $scope.newMeal.calories = 0;
 
@@ -28,12 +39,5 @@ calApp.controller('MainController', function($scope, $http) {
     console.log(response);
   });
 
-  $http({
-    method: 'POST',
-    url:'http://localhost:3000/meals'
-  }).then(function succesCallback(req){
-    console.log(req.data);
-  }, function errorCallback(response) {
-    console.log(response);
-  });
+  
 });
