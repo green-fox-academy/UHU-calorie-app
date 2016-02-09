@@ -17,7 +17,7 @@ calApp.controller('MainController', function($scope, $http) {
     
     $http.post('http://localhost:3000/meals', mealCreator, config   
   ).then(function(response){
-      console.log(response);
+      $scope.getAll();
     },
         function(response) {
       console.log(response);
@@ -30,7 +30,7 @@ calApp.controller('MainController', function($scope, $http) {
 
   $scope.newMeal.date = new Date();
 
-  $http({
+  $scope.getAll = function() {$http({
     method: 'GET',
     url:'http://localhost:3000/meals'
   }).then(function succesCallback(response){
@@ -38,6 +38,8 @@ calApp.controller('MainController', function($scope, $http) {
   }, function errorCallback(response) {
     console.log(response);
   });
-
+  };
   
+  $scope.getAll();
 });
+
