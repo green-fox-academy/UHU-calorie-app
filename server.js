@@ -13,9 +13,9 @@ app.listen(process.env.PORT || defaultPort);
 
 var dbConfig = {
   host: 'localhost',
-  user: 'root',
-  password: 'mysql44',
-  database: 'meal',
+  user: 'test',
+  password: 'test',
+  database: 'calorie',
   timezone: 'utc'
 };
 

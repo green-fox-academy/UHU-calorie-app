@@ -9,7 +9,7 @@
   </head>
   <body ng-controller="MainController">
     <div class="input-field">
-      <input type="text" ng-model="newMeal.mealName" placeholder="Add meal name" required='true'>
+      <input type="text" ng-model="newMeal.meal_name" placeholder="Add meal name" required='true'>
       <input type="number" ng-model="newMeal.calories" placeholder="Add calories" required='true'>
       <input type="date"  ng-model="newMeal.date" required='true'>
       <button type="button" ng-click="newMeal()">Add</button>
@@ -20,7 +20,7 @@
     </div>
     <hr>
     <div class="meals" ng-repeat="meal in meals | filter : akarmi | orderBy : 'date':reverse">
-      <div>{{ meal.mealName }} {{ meal.calories}} {{ meal.date | date : "yyyy-MM-dd" }}</div>
+      <div>{{ meal.meal_name }} {{ meal.calories}} {{ meal.date | date : "yyyy-MM-dd" }}</div>
     </div>
 
   </body>
