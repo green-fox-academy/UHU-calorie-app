@@ -19,7 +19,7 @@
       <input type="text" ng-model="akarmi">
     </div>
     <hr>
-    <div class="meals" ng-repeat="meal in meals | filter : akarmi | orderBy : 'date':reverse">
+    <div class="meals" ng-repeat="meal in meals | filter : akarmi | orderBy : 'date':true">
       <div>{{ meal.meal_name }} {{ meal.calories}} {{ meal.date | date : "yyyy-MM-dd" }}</div>
     </div>
 
