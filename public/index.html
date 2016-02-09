@@ -1,45 +1,27 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="calApp">
   <head>
     <meta charset="utf-8">
-    <title>Calorie counter</title>
-    <link rel="stylesheet" href="./style.css">
-    <link rel="stylesheet" href="./boldlight.css">
+    <script src="angular.min.js"></script>
+    <script src="calApp.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <title></title>
   </head>
-  <body>
-    <h1>Calorie Counter</h1>
-    <div class="divider"></div>
-    <br>
-    <form class="input">
-      <input type="text" required="required" placeholder="Meal input" id="new-meal" maxlength="22" autocomplete/>
-      <input type="number" required="required" placeholder="kCal" id="new-calories" min="0" autocomplete/>
-      <input type="date" required="required" id="new-date"/>
-      <input type="button" id="add" value="OK"/>
-    </form>
-    <br>
-    <div class="divider"></div>
-    <br>
-    <div class="filter">
-        <span class="summary">Daily energy:</span>
-        <span class="summary"></span>
-        <span class="summary" id="summary">0 kcal</span>
+  <body ng-controller="MainController">
+    <div class="input-field">
+      <input type="text" ng-model="newMeal.mealName" placeholder="Add meal name" required='true'>
+      <input type="number" ng-model="newMeal.calories" placeholder="Add calories" required='true'>
+      <input type="date"  ng-model="newMeal.date" required='true'>
+      <button type="button" ng-click="newMeal()">Add</button>
     </div>
-    <br>
-    <div class="dropdown">
-        <button class="dropbtn">Pick a Date</button>
-        <br>
-        <br>
-        <div id="myDropdown" class="dropdown-content">
-        </div>
-    <div/>
-    <br>
-    <div class="divider"></div>
-    <br>
-    <div class="items-container"></div>
-    <br>
-    <div class="divider"></div>
-    <script src="humane.min.js"></script>
-    <script src="./animatedCounter.js"></script>
-    <script src="./script.js"></script>
+    <hr>
+    <div class="filter-field">
+      <input type="text" ng-model="akarmi">
+    </div>
+    <hr>
+    <div class="meals" ng-repeat="meal in meals | filter : akarmi | orderBy : 'date':reverse">
+      <div>{{ meal.mealName }} {{ meal.calories}} {{ meal.date | date : "yyyy-MM-dd" }}</div>
+    </div>
+
   </body>
 </html>
