@@ -1,52 +1,27 @@
 'use strict';
 
-var Meal = require('./meals.js');
-var mysql = require('mysql');
+var main = require('./main.js');
+var defaultPort = 3000;
+var app = main.serverFunction(connectionCreator());
 
-var dbConfig = {
-  host: 'localhost',
-  user: 'root',
-  password: 'mysql44',
-  database: 'meal',
-  timezone: 'utc'
-};
-
-var connection = mysql.createConnection(process.env.CLEARDB_DATABASE_URL || dbConfig);
-
-connection.connect();
-
-var meals = new Meal(connection);
-
-function serverFunctions(app){
-  app.get('/meals', function(req, res) {
-    meals.list(function(err, result){
-      if (err){
-        res.json({status: 'not exists'});
-      } else {
-        res.json(result);
-      }
-    });
-  });
-
-  app.delete('/meals/:id', function (req, res){
-    meals.del(req.params.id, function(err, result) {
-      if (err) {
-        res.json(result);
-      } else {
-        res.json({status: 'ok'});
-      }
-    });
-  });
-
-  app.post('/meals', function (req, res) {
-    meals.add(req.body, function(err, result) {
-      res.json({
-        result: result
-      });
-    });
-  });
+function serverStartLog(){
+  console.log('The Server started!');
 }
-module.exports = {
-  serverFunctions: serverFunctions
-};
 
+function connectionCreator(){
+  var mysql = require('mysql');
+  var envVar = process.env.CLEARDB_DATABASE_URL;
+  var dbConfig = {
+    host: 'localhost',
+    user: 'test',
+    password: 'test',
+    database: 'calorie',
+    timezone: 'utc'
+  };
+  var connection = mysql.createConnection( envVar || dbConfig);
+
+  connection.connect();
+  return connection;
+}
+
+app.listen(process.env.PORT || defaultPort, serverStartLog);
