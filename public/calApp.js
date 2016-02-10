@@ -2,7 +2,7 @@
 
 var calApp = angular.module('calApp', []);
 
-calApp.controller('MainController', function($scope, $http) {
+calApp.controller('MainController', function($rootScope, $scope, $http) {
 
   $scope.newMeal = function() {
     var mealCreator = {
@@ -43,4 +43,3 @@ calApp.controller('MainController', function($scope, $http) {
 
   $scope.getAll();
 });
-
