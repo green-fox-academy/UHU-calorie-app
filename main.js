@@ -1,23 +1,16 @@
 'use strict';
 
+var bodyParser = require('body-parser');
 var Meal = require('./meals.js');
-var mysql = require('mysql');
 
-var dbConfig = {
-  host: 'localhost',
-  user: 'test',
-  password: 'test',
-  database: 'calorie',
-  timezone: 'utc'
-};
+function serverFunction(connect){
+  var meals = new Meal(connect);
+  var express = require('express');
+  var app = express();
+  app.use(bodyParser.json());
+  app.use(express.static('public'));
 
-var connection = mysql.createConnection(process.env.CLEARDB_DATABASE_URL || dbConfig);
 
-connection.connect();
-
-var meals = new Meal(connection);
-
-function serverFunctions(app){
   app.get('/meals', function(req, res) {
     meals.list(function(err, result){
       if (err){
@@ -45,8 +38,10 @@ function serverFunctions(app){
       });
     });
   });
-}
-module.exports = {
-  serverFunctions: serverFunctions
-};
 
+  return app;
+}
+
+module.exports = {
+  serverFunction: serverFunction
+};
