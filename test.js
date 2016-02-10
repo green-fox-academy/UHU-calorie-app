@@ -78,11 +78,11 @@ test.cb('server app.get type', t => {
   });
 });
 
-
 test.cb('server app.post', t => {
-
   var testVar = {
+    /* jshint ignore:start */
     meal_name: 'hamburger',
+    /* jshint ignore:end */
     calories: 666,
     date: '2015-02-03'
   };
