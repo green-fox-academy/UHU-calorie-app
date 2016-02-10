@@ -2,6 +2,8 @@
 
 import test from 'ava';
 import Meal from './meals';
+import main from './main.js';
+import supertest from 'supertest';
 
 test('return connection', t => {
   var connection = {};
@@ -41,3 +43,20 @@ test('list item', t => {
   });
 });
 
+test.cb('server app get', t => {
+  var connection = {};
+  connection.query = function(query,cb){
+    cb(null, [{}]);
+  };
+  var app = main.serverFunction(connection);
+  supertest(app)
+  .get('/meals')
+  .expect(200)
+  .end(function(err, res) {
+    if (err) {
+      t.fail(err);
+    }
+    console.log(res.body);
+  t.end();
+  });
+});
