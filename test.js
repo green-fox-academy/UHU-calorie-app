@@ -43,7 +43,7 @@ test('list item', t => {
   });
 });
 
-test.cb('server app get', t => {
+test.cb('server app.get', t => {
   var connection = {};
   connection.query = function(query,cb){
     cb(null, [{}]);
@@ -57,6 +57,50 @@ test.cb('server app get', t => {
       t.fail(err);
     }
     console.log(res.body);
-  t.end();
+    t.end();
+  });
+});
+
+test.cb('server app.get type', t => {
+  var connection = {};
+  connection.query = function(query,cb){
+    cb(null, [{}]);
+  };
+  var app = main.serverFunction(connection);
+  supertest(app)
+  .get('/meals')
+  .expect('Content-Type', /json/)
+  .end(function(err) {
+    if (err) {
+      t.fail(err);
+    }
+    t.end();
+  });
+});
+
+
+test.cb('server app.post', t => {
+
+  var testVar = {
+    meal_name: 'hamburger',
+    calories: 666,
+    date: '2015-02-03'
+  };
+
+  var connection = {};
+  connection.query = function(query, meal ,cb){
+    t.same(meal, testVar);
+    t.end();
+    cb(null, 'ok');
+  };
+  var app = main.serverFunction(connection);
+  supertest(app)
+  .post('/meals')
+  .send(testVar)
+  .expect('Content-Type', /json/)
+  .end(function(err) {
+    if (err) {
+      t.fail(err);
+    }
   });
 });
