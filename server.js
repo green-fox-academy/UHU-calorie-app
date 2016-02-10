@@ -1,54 +1,28 @@
 'use strict';
 
-var express = require('express');
-var Meal = require('./meals.js');
-var bodyParser = require('body-parser');
-var mysql = require('mysql');
-var app = express();
+var main = require('./main.js');
 var defaultPort = 3000;
+var app = main.serverFunction(connectionCreator());
 
-app.use(bodyParser.json());
-app.use(express.static('public'));
-app.listen(process.env.PORT || defaultPort);
+function serverStartLog(){
+  console.log('The Server started!');
+}
 
-var dbConfig = {
-  host: 'localhost',
-  user: 'test',
-  password: 'test',
-  database: 'calorie',
-  timezone: 'utc'
-};
+function connectionCreator(){
+  var mysql = require('mysql');
+  var envVar = process.env.CLEARDB_DATABASE_URL;
+  var dbConfig = {
+    host: 'localhost',
+    user: 'test',
+    password: 'test',
+    database: 'calorie',
+    timezone: 'utc'
+  };
+  var connection = mysql.createConnection( envVar || dbConfig);
 
-var connection = mysql.createConnection(process.env.CLEARDB_DATABASE_URL || dbConfig);
+  connection.connect();
+  return connection;
+}
 
-connection.connect();
+app.listen(process.env.PORT || defaultPort, serverStartLog);
 
-var meals = new Meal(connection);
-
-app.get('/meals', function(req, res) {
-  meals.list(function(err, result){
-    if (err){
-      res.json({status: 'not exists'});
-    } else {
-      res.json(result);
-    }
-  });
-});
-
-app.delete('/meals/:id', function (req, res){
-  meals.del(req.params.id, function(err, result) {
-    if (err) {
-      res.json(result);
-    } else {
-      res.json({status: 'ok'});
-    }
-  });
-});
-
-app.post('/meals', function (req, res) {
-  meals.add(req.body, function(err, result) {
-    res.json({
-      result: result
-    });
-  });
-});
