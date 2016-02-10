@@ -30,6 +30,8 @@
   "dependencies": {
     "body-parser": "^1.14.2",
     "express": "^4.13.4",
-    "mysql": "^2.10.2"
+    "karma": "^0.13.19",
+    "mysql": "^2.10.2",
+    "phantomjs": "^2.1.3"
   }
 }
