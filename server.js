@@ -25,4 +25,3 @@ function connectionCreator(){
 }
 
 app.listen(process.env.PORT || defaultPort, serverStartLog);
-
