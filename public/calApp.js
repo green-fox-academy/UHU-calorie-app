@@ -10,19 +10,19 @@ calApp.controller('MainController', function($scope, $http) {
       calories: $scope.newMeal.calories,
       date: $scope.newMeal.date
     };
-    
+
     var config = {
       headers : {'Content-Type': 'application/json'}
-    }
-    
-    $http.post('http://localhost:3000/meals', mealCreator, config   
-  ).then(function(response){
-      $scope.getAll();
+    };
+
+    $http.post('http://localhost:3000/meals', mealCreator, config)
+    .then(function(response){
+      $scope.meals.push(mealCreator);
+      console.log(response);
     },
-        function(response) {
+    function(response) {
       console.log(response);
     });
-    //$scope.meals.push(mealCreator);
     $scope.newMeal.meal_name = '';
     $scope.newMeal.calories = 0;
 
@@ -33,13 +33,14 @@ calApp.controller('MainController', function($scope, $http) {
   $scope.getAll = function() {$http({
     method: 'GET',
     url:'http://localhost:3000/meals'
-  }).then(function succesCallback(response){
+  })
+  .then(function succesCallback(response){
     $scope.meals = response.data;
   }, function errorCallback(response) {
     console.log(response);
   });
   };
-  
+
   $scope.getAll();
 });
 
