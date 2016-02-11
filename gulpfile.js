@@ -18,15 +18,15 @@ gulp.task('test', function() {
 });
 
 gulp.task('sass', function () {
-  return gulp.src('./sass/**/public/*.scss')
+  return gulp.src('./sass/**/*.scss')
     .pipe(sass.sync().on('error', sass.logError))
-    .pipe(gulp.dest('./css'));
+    .pipe(gulp.dest('./public'));
 });
 
 gulp.task('watch', function() {
   gulp.watch('./*.js', ['jshint']);
   gulp.watch('./*.js', ['test']);
-  gulp.watch('./sass/**/public/*.scss', ['sass']);
+  gulp.watch('./sass/**/*.scss', ['sass']);
 });
 
 gulp.task('ci', ['test', 'jshint', 'sass']);
