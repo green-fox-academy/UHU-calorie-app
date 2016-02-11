@@ -3,6 +3,7 @@
 var gulp = require('gulp'); 
 var jshint = require('gulp-jshint');
 var ava = require('gulp-ava');
+var sass = require('gulp-sass');
 
 gulp.task('jshint', function() {
   gulp.src('./*.js')
@@ -16,11 +17,18 @@ gulp.task('test', function() {
   .pipe(ava());
 });
 
+gulp.task('sass', function () {
+    return gulp.src('./public/*.sass')
+    .pipe(sass.sync().on('error', sass.logError))
+    .pipe(gulp.dest('./public/'));
+});
+
 gulp.task('watch', function() {
   gulp.watch('./*.js', ['jshint']);
   gulp.watch('./*.js', ['test']);
+  gulp.watch('./*.sass', ['sass']);
 });
 
-gulp.task('ci', ['test', 'jshint']);
+gulp.task('ci', ['test', 'jshint', 'sass']);
 
 gulp.task('default', ['watch']);
