@@ -13,9 +13,9 @@ function connectionCreator(){
   var envVar = process.env.CLEARDB_DATABASE_URL;
   var dbConfig = {
     host: 'localhost',
-    user: 'test',
-    password: 'test',
-    database: 'calorie',
+    user: 'root',
+    password: '',
+    database: 'calories',
     timezone: 'utc'
   };
   var connection = mysql.createConnection( envVar || dbConfig);
