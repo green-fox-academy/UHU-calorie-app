@@ -26,7 +26,7 @@ gulp.task('sass', function () {
 gulp.task('watch', function() {
   gulp.watch('./*.js', ['jshint']);
   gulp.watch('./*.js', ['test']);
-  gulp.watch('./sass/**/*.scss', ['sass']);
+  gulp.watch('./*.scss', ['sass']);
 });
 
 gulp.task('ci', ['test', 'jshint', 'sass']);
