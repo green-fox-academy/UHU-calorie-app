@@ -1,32 +1,31 @@
 'use strict';
-
-describe('Testing UHU Calorie App', function() {
+describe('Testing UHU Calorie App', function () {
   beforeEach(module('calApp'));
+
   describe('MainController', function() {
     var scope, ctrl, $httpBackend, mealsEndpoint, postEndpoint;
-
     beforeEach(inject(function($controller, $rootScope, $injector) {
       scope = $rootScope.$new();
-
       $httpBackend = $injector.get('$httpBackend');
       mealsEndpoint = $httpBackend.when('GET', 'http://localhost:3000/meals').respond(['alma']);
       postEndpoint = $httpBackend.when('POST', 'http://localhost:3000/meals').respond(200,'ok');
 
+    var postEndpoint = $httpBackend.when('POST', 'http://localhost:3000/meals').respond(200,'ok');
+
       ctrl = $controller('MainController', {$scope:scope});
     }));
-
-    afterEach(function() {
+    afterEach(function () {
       $httpBackend.verifyNoOutstandingExpectation();
       $httpBackend.verifyNoOutstandingRequest();
     });
 
-    it('test existence of functions', function() {
+    it('test existence of functions', function () {
       expect(scope.newMeal).toBeDefined();
       expect(scope.getAll).toBeDefined();
       $httpBackend.flush();
     });
 
-    it('test GET request', function() {
+    it('test GET request', function () {
       $httpBackend.expectGET('http://localhost:3000/meals');
       mealsEndpoint.respond('teve');
       scope.getAll();
