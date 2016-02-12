@@ -1,45 +1,50 @@
 'use strict';
 
 var calApp = angular.module('calApp', []);
+var localURL = 'http://localhost:3000/meals';
 
 calApp.controller('MainController', function($rootScope, $scope, $http) {
 
-  $scope.newMeal = function() {
-    var mealCreator = {
-      meal_name: $scope.newMeal.meal_name,
-      calories: $scope.newMeal.calories,
-      date: $scope.newMeal.date
+  $scope.addNewMeal = function() {
+    var newMeal = {
+      meal_name: $scope.addNewMeal.meal_name,
+      calories: $scope.addNewMeal.calories,
+      date: $scope.addNewMeal.date
     };
 
     var config = {
       headers : {'Content-Type': 'application/json'}
     };
-
-    $http.post('http://localhost:3000/meals', mealCreator, config)
-    .then(function(response){
-      $scope.meals.push(mealCreator);
-      console.log(response);
-    },
-    function(response) {
-      console.log(response);
-    });
-    $scope.newMeal.meal_name = '';
-    $scope.newMeal.calories = 0;
-
+    
+    var clearInputFields = function() {
+      $scope.addNewMeal.meal_name = '';
+      $scope.addNewMeal.calories = 0;
+    }
+    
+    var succesCbPost = function(response) {
+      $scope.meals.push(newMeal);
+    } 
+    
+    var errorCbPost = function(response) {
+      $scope.error = response.data;
+    }
+    
+    $http.post(localURL, newMeal, config).then(succesCbPost,errorCbPost);
+    clearInputFields();
   };
-
-  $scope.newMeal.date = new Date();
-
-  $scope.getAll = function() {$http({
-    method: 'GET',
-    url:'http://localhost:3000/meals'
-  })
-  .then(function succesCallback(response){
+  
+  var succesCbGet = function (response){
     $scope.meals = response.data;
-  }, function errorCallback(response) {
-    console.log(response);
-  });
-  };
+  }
+  
+  var errorCbGet= function (response){
+    $scope.error = response.data;
+  }
 
+  $scope.getAll = function() {
+    $http.get(localURL).then( succesCbGet, errorCbGet);
+  };
+  
+  $scope.addNewMeal.date = new Date();
   $scope.getAll();
 });

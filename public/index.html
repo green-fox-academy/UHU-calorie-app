@@ -8,17 +8,17 @@
   </head>
   <body ng-controller="MainController">
     <div class="input-field">
-      <input type="text" ng-model="newMeal.meal_name" placeholder="Add meal name" required='true'>
-      <input type="number" ng-model="newMeal.calories" placeholder="Add calories" required='true'>
-      <input type="date"  ng-model="newMeal.date" required='true'>
-      <button type="button" ng-click="newMeal()">Add</button>
+      <input type="text" ng-model="addNewMeal.meal_name" placeholder="Add meal name" required='true'>
+      <input type="number" ng-model="addNewMeal.calories" placeholder="Add calories" required='true'>
+      <input type="date"  ng-model="addNewMeal.date" required='true'>
+      <button type="button" ng-click="addNewMeal()">Add</button>
     </div>
     <hr>
     <div class="filter-field">
-      <input type="text" ng-model="akarmi">
+      <input type="text" ng-model="searchText">
     </div>
     <hr>
-    <div class="meals" ng-repeat="meal in meals | filter : akarmi | orderBy : 'date':true">
+    <div class="meals" ng-repeat="meal in meals | filter : searchText | orderBy : 'date':true">
       <div>{{ meal.meal_name }} {{ meal.calories}} {{ meal.date | date : "yyyy-MM-dd" }}</div>
     </div>
 
