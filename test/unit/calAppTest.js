@@ -10,8 +10,6 @@ describe('Testing UHU Calorie App', function () {
       mealsEndpoint = $httpBackend.when('GET', 'http://localhost:3000/meals').respond(['alma']);
       postEndpoint = $httpBackend.when('POST', 'http://localhost:3000/meals').respond(200,'ok');
 
-    var postEndpoint = $httpBackend.when('POST', 'http://localhost:3000/meals').respond(200,'ok');
-
       ctrl = $controller('MainController', {$scope:scope});
     }));
     afterEach(function () {
