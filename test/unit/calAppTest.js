@@ -19,7 +19,7 @@ describe('Testing UHU Calorie App', function () {
     });
 
     it('test existence of functions', function () {
-      expect(scope.newMeal).toBeDefined();
+      expect(scope.addNewMeal).toBeDefined();
       expect(scope.getAll).toBeDefined();
       $httpBackend.flush();
     });
@@ -35,34 +35,34 @@ describe('Testing UHU Calorie App', function () {
     it('test POST request', function() {
       $httpBackend.expectPOST('http://localhost:3000/meals',
       {meal_name: 'kacsa', calories: 'majon', date: 'blabla'});
-      scope.newMeal.meal_name = 'kacsa';
-      scope.newMeal.calories = 'majon';
-      scope.newMeal.date = 'blabla';
-      scope.newMeal();
+      scope.addNewMeal.meal_name = 'kacsa';
+      scope.addNewMeal.calories = 'majon';
+      scope.addNewMeal.date = 'blabla';
+      scope.addNewMeal();
       $httpBackend.flush();
       expect(scope.meals.length).toBe(2);
     });
 
     it('test POST request', function() {
       $httpBackend.expectPOST('http://localhost:3000/meals');
-      scope.newMeal.meal_name = 'radir';
-      scope.newMeal();
+      scope.addNewMeal.meal_name = 'radir';
+      scope.addNewMeal();
       $httpBackend.flush();
       expect(scope.meals[1].meal_name).toBe('radir');
     });
 
     it('test POST request', function() {
       $httpBackend.expectPOST('http://localhost:3000/meals');
-      scope.newMeal.calories = '300';
-      scope.newMeal();
+      scope.addNewMeal.calories = '300';
+      scope.addNewMeal();
       $httpBackend.flush();
       expect(scope.meals[1].calories).toBe('300');
     });
 
     it('test POST request', function() {
       $httpBackend.expectPOST('http://localhost:3000/meals');
-      scope.newMeal.date = 'blabla';
-      scope.newMeal();
+      scope.addNewMeal.date = 'blabla';
+      scope.addNewMeal();
       $httpBackend.flush();
       expect(scope.meals[1].date).toBe('blabla');
     });
